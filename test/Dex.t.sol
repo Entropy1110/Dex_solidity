@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
-import "openzeppelin-contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "../src/Dex.sol";
 
 contract CustomERC20 is ERC20 {
@@ -245,7 +245,7 @@ contract DexTest is Test {
 
         tokenX.transfer(address(dex), 1000 ether);
         uint lp2 = dex.addLiquidity(5000 ether, 4000 ether, 0);
-        emit log_named_uint("LP", lp);
+        emit log_named_uint("LP", lp2);
 
         (uint rx, uint ry) = dex.removeLiquidity(lp, 0, 0);
         assertEq(rx, 5000 ether, "rx failed");
